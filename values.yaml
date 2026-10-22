@@ -1,0 +1,52 @@
+replicaCount: 1
+
+image:
+  repository: ghcr.io/cloudstack0/test
+  tag: latest
+  pullPolicy: IfNotPresent
+
+pipeline:
+  enabled: true
+  git:
+    url: https://github.com/Cloudstack0/test.git
+    revision: main
+  build:
+    dockerfile: Dockerfile
+    context: .
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 80
+
+httpRoute:
+  enabled: true
+  parentRefs:
+    - name: internal
+      namespace: infra
+  hostnames:
+    - test.central.internal.beftraelec.ma
+
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
+
+livenessProbe:
+  enabled: false
+  httpGet:
+    path: /
+    port: 8080
+  initialDelaySeconds: 10
+  periodSeconds: 10
+
+readinessProbe:
+  enabled: false
+  httpGet:
+    path: /
+    port: 8080
+  initialDelaySeconds: 10
+  periodSeconds: 10

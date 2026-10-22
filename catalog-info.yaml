@@ -1,0 +1,20 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: test
+  description: test
+  annotations:
+    github.com/project-slug: Cloudstack0/test
+    backstage.io/kubernetes-id: test
+    backstage.io/kubernetes-namespace: test
+    argocd/app-name: central-test
+    janus-idp.io/tekton: test
+  links:
+    - title: Modify Configuration
+      icon: edit
+      url: >-
+        https://rhdh.central.internal.beftraelec.ma/create/templates/default/modify-microservice?formData=%7B%22name%22%3A%22test%22%2C%22description%22%3A%22test%22%2C%22owner%22%3A%22user%3Adefault%2Fmehdirtal7%22%2C%22replicaCount%22%3A1%2C%22baseImageRepository%22%3A%22nginx%22%2C%22baseImageTag%22%3A%22alpine%22%2C%22imagePullPolicy%22%3A%22IfNotPresent%22%2C%22pipelineEnabled%22%3Atrue%2C%22gitRevision%22%3A%22main%22%2C%22dockerfilePath%22%3A%22Dockerfile%22%2C%22dockerBuildContext%22%3A%22.%22%2C%22port%22%3A80%2C%22httpRouteEnabled%22%3Atrue%2C%22cpuRequest%22%3A%2250m%22%2C%22memoryRequest%22%3A%2264Mi%22%2C%22cpuLimit%22%3A%22500m%22%2C%22memoryLimit%22%3A%22512Mi%22%2C%22probePath%22%3A%22%2F%22%2C%22probeInitialDelaySeconds%22%3A10%2C%22probePeriodSeconds%22%3A10%2C%22repoOwner%22%3A%22Cloudstack0%22%7D
+spec:
+  type: service
+  lifecycle: experimental
+  owner: user:default/mehdirtal7
